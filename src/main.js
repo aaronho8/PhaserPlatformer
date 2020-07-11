@@ -20,3 +20,4 @@ var cursors;
 var groundLayer
 var text;
 var score = 0;
+let keyENTER;

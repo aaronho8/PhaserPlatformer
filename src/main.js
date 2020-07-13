@@ -1,3 +1,8 @@
+// Team Members:
+// Aaron Ho
+// Justin Lao
+
+
 var config = {
     type: Phaser.AUTO,
     width: 800,

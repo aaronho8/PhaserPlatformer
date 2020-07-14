@@ -6,7 +6,7 @@ class Heartbreak extends Phaser.GameObjects.Sprite {
 
     update() {
         // move spaceship left
-        this.x -= -20;
+        this.x -= 4;
         // wraparound from left to right edge
         if (this.x <= 0-this.width) {
             this.reset();

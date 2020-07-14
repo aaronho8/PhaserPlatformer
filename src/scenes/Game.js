@@ -14,8 +14,9 @@ class Game extends Phaser.Scene {
         this.load.image('bigCloud', './assets/big_cloud.png');
         this.load.image('smallCloud', './assets/Cloud.png');
 
-        // player animations
+        // player/sprite animations and animations
         this.load.atlas('player', 'assets/player.png', 'assets/player.json');
+        this.load.image('heart', './assets/heart.png');
         
         //  game music
         this.load.audio('music', './assets/gamemusic.mp3');
@@ -110,11 +111,13 @@ class Game extends Phaser.Scene {
     
         // set background color, so the sky is not black    
         this.cameras.main.setBackgroundColor('#000000');
-    
-       
+          
+        this.heartAttack = new Heartbreak(this, 2200, 200, 'heart', 0, 30).setOrigin(0,0);
     }
 
     update(time, delta) {
+        this.heartAttack.update();
+
         if (cursors.left.isDown)
         {
             player.body.setVelocityX(-200);
@@ -134,6 +137,23 @@ class Game extends Phaser.Scene {
         if (cursors.up.isDown && player.body.onFloor())
         {
             player.body.setVelocityY(-500);        
+        }
+
+        // check collisions
+        if(this.checkCollision(player, this.heartAttack)) {
+            this.heartAttack.reset();
+        }
+    }
+
+    checkCollision(character, heart1) {
+        // simple AABB checking
+        if (character.x < heart1.x + heart1.width && 
+            character.x + character.width > heart1.x && 
+            character.y < heart1.y + heart1.height &&
+            character.height + character.y > heart1. y) {
+                return true;
+        } else {
+            return false;
         }
     }
 }

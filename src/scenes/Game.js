@@ -6,12 +6,14 @@ class Game extends Phaser.Scene {
     preload() {
         // map made with Tiled in JSON format
         this.load.tilemapTiledJSON('map', 'assets/map.json');
+
         // tiles in spritesheet 
         this.load.spritesheet('tiles', 'assets/tiles.png', {frameWidth: 70, frameHeight: 70});
     
         // player animations
         this.load.atlas('player', 'assets/player.png', 'assets/player.json');
-    
+        
+        //  game music
         this.load.audio('music', './assets/gamemusic.mp3');
     }
     
@@ -29,6 +31,10 @@ class Game extends Phaser.Scene {
         }    
         this.music.play(musicConfig);
     
+        //  replace with sky blue
+        this.add.rectangle(0, 0, 2200, 540, 0x87ceeb).setOrigin(0, 0);
+        this.add.rectangle(0, 500, 2200, 200, 0x9b7653).setOrigin(0, 0);
+
         // load the map 
         map = this.make.tilemap({key: 'map'});
     

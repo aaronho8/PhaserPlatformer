@@ -11,6 +11,7 @@ class Game extends Phaser.Scene {
         this.load.spritesheet('tiles', 'assets/tiles.png', {frameWidth: 70, frameHeight: 70});
         
         // sky assets
+        this.load.image('sun', './assets/sun_shiny.png');
         this.load.image('bigCloud', './assets/big_cloud.png');
         this.load.image('smallCloud', './assets/Cloud.png');
 
@@ -39,6 +40,7 @@ class Game extends Phaser.Scene {
         //  replace with sky blue
         this.add.rectangle(0, 0, 2200, 540, 0x87ceeb).setOrigin(0, 0);
         this.add.rectangle(0, 500, 2200, 200, 0x9b7653).setOrigin(0, 0);
+        this.add.image(-300, -280, 'sun').setScale(3).setOrigin(0,0);
         this.add.image(80, 50, 'bigCloud').setScale(3).setOrigin(0,0);
         this.add.image(200, 100, 'smallCloud').setScale(3).setOrigin(0,0);
         this.add.image(360, 80, 'smallCloud').setScale(3).setOrigin(0,0);

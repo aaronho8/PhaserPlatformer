@@ -17,6 +17,7 @@ class Game extends Phaser.Scene {
 
         // player/sprite animations and animations
         this.load.atlas('player', 'assets/player.png', 'assets/player.json');
+        this.load.atlas('demon', 'assets/demon.png', 'assets/demon.json');
         this.load.image('heart', './assets/heart.png');
         
         //  game music
@@ -40,7 +41,7 @@ class Game extends Phaser.Scene {
         //  replace with sky blue
         this.add.rectangle(0, 0, 2200, 540, 0x87ceeb).setOrigin(0, 0);
         this.add.rectangle(0, 500, 2200, 200, 0x9b7653).setOrigin(0, 0);
-        this.add.image(-300, -280, 'sun').setScale(3).setOrigin(0,0);
+        this.add.image(-350, -300, 'sun').setScale(3).setOrigin(0,0);
         this.add.image(80, 50, 'bigCloud').setScale(3).setOrigin(0,0);
         this.add.image(200, 100, 'smallCloud').setScale(3).setOrigin(0,0);
         this.add.image(360, 80, 'smallCloud').setScale(3).setOrigin(0,0);
@@ -62,19 +63,23 @@ class Game extends Phaser.Scene {
         // the player will collide with this layer
         groundLayer.setCollisionByExclusion([-1]);
     
-        
-    
         // set the boundaries of our game world
         this.physics.world.bounds.width = groundLayer.width;
         this.physics.world.bounds.height = groundLayer.height;
     
         // create the player sprite    
-        player = this.physics.add.sprite(200, 200, 'player');
+        player = this.physics.add.sprite(200, 200, 'player').setOrigin(0,0);
         player.setBounce(0.2); // our player will bounce from items
         player.setCollideWorldBounds(true); // don't go out of the map    
         
-        // small fix to our player images, we resize the physics body object slightly
-        player.body.setSize(player.width, player.height-8);
+        //create the demon sprite
+        demon = new Demon(this, 500, 440, 'demon', 0, 30).setOrigin(0,0);  
+
+        // small fix to our player and demon images, we resize the physics body object slightly
+        player.body.setSize(player.width - 48, player.height - 18);
+
+        demon.setScale(3);
+        demon.setSize(demon.width, demon.height + 48);
         
         // player will collide with the level tiles 
         this.physics.add.collider(groundLayer, player);
@@ -103,7 +108,6 @@ class Game extends Phaser.Scene {
             frameRate: 10,
           });
     
-    
         cursors = this.input.keyboard.createCursorKeys();
     
         // set bounds so the camera won't go outside the game world
@@ -114,12 +118,14 @@ class Game extends Phaser.Scene {
         // set background color, so the sky is not black    
         this.cameras.main.setBackgroundColor('#000000');
           
-        this.heartAttack = new Heartbreak(this, 2200, 200, 'heart', 0, 30).setOrigin(0,0);
+        this.heartAttack = new Heartbreak(this, 2200, 210, 'heart', 0, 30).setOrigin(0,0);
     }
 
     update(time, delta) {
         this.heartAttack.update();
+        demon.update();
 
+        // Player Controls
         if (cursors.left.isDown)
         {
             player.body.setVelocityX(-200);
@@ -145,14 +151,17 @@ class Game extends Phaser.Scene {
         if(this.checkCollision(player, this.heartAttack)) {
             this.heartAttack.reset();
         }
+        if(this.checkCollision(player, demon)) {
+            demon.reset();
+        }
     }
 
-    checkCollision(character, heart1) {
+    checkCollision(character, object1) {
         // simple AABB checking
-        if (character.x < heart1.x + heart1.width && 
-            character.x + character.width > heart1.x && 
-            character.y < heart1.y + heart1.height &&
-            character.height + character.y > heart1. y) {
+        if (character.x < object1.x + object1.width && 
+            character.x + character.width > object1.x && 
+            character.y < object1.y + object1.height &&
+            character.height + character.y > object1.y) {
                 return true;
         } else {
             return false;

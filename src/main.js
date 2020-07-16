@@ -20,6 +20,7 @@ var config = {
 var game = new Phaser.Game(config);
 
 var map;
+var demon;
 var player;
 var cursors;
 var groundLayer

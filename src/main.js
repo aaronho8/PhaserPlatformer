@@ -25,4 +25,9 @@ var player;
 var cursors;
 var groundLayer
 var text;
+var groundLayer, coinLayer;
+var text;
+var score = 0;
+
+
 let keyENTER;

@@ -20,11 +20,22 @@ class Game extends Phaser.Scene {
         this.load.atlas('demon', 'assets/demon.png', 'assets/demon.json');
         this.load.image('heart', './assets/heart.png');
         
+        // simple coin image
+        this.load.image('coin', 'assets/coinGold.png');
+
         //  game music
         this.load.audio('music', './assets/gamemusic.mp3');
     }
     
+
+    
+
+
+
     create() {
+
+         
+    
         //music
         this.music = this.sound.add('music');
         var musicConfig = {
@@ -63,6 +74,13 @@ class Game extends Phaser.Scene {
         // the player will collide with this layer
         groundLayer.setCollisionByExclusion([-1]);
     
+
+        // coin image used as tileset
+        var coinTiles = map.addTilesetImage('coin');
+        // add coins as tiles
+        coinLayer = map.createDynamicLayer('Coins', coinTiles, 0, 0);
+
+
         // set the boundaries of our game world
         this.physics.world.bounds.width = groundLayer.width;
         this.physics.world.bounds.height = groundLayer.height;
@@ -84,6 +102,12 @@ class Game extends Phaser.Scene {
         // player will collide with the level tiles 
         this.physics.add.collider(groundLayer, player);
       
+       coinLayer.setTileIndexCallback(17, collectCoin, this.function); // the coin id is 17
+        // when the player overlaps with a tile with index 17, collectCoin will be called    
+        this.physics.add.overlap(player, coinLayer);
+
+    
+
         // player walk animation
         this.anims.create({
             key: 'walk',
@@ -119,8 +143,21 @@ class Game extends Phaser.Scene {
         this.cameras.main.setBackgroundColor('#000000');
           
         this.heartAttack = new Heartbreak(this, 2200, 210, 'heart', 0, 30).setOrigin(0,0);
+
+
+
+
+        text = this.add.text(20, 570, '0', {
+            fontSize: '20px',
+            fill: '#ffffff'
+        });
+        text.setScrollFactor(0);
     }
 
+    
+    
+    
+    
     update(time, delta) {
         this.heartAttack.update();
         demon.update();
@@ -155,6 +192,18 @@ class Game extends Phaser.Scene {
             demon.reset();
         }
     }
+
+
+    
+
+    // this function will be called when the player touches a coin
+    collectCoin(sprite, tile) {
+        coinLayer.removeTileAt(tile.x, tile.y); // remove the tile/coin
+        score++; // add 10 points to the score
+        text.setText(score); // set the text to show the current score
+        return false;
+    }
+
 
     checkCollision(character, object1) {
         // simple AABB checking

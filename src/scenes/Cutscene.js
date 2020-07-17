@@ -1,6 +1,6 @@
-class Menu extends Phaser.Scene {
+class Cutscene extends Phaser.Scene {
     constructor() {
-      super("menuScene");
+      super("cutScene");
     }
      
     create() {
@@ -36,7 +36,7 @@ class Menu extends Phaser.Scene {
 
     update() {
         if (Phaser.Input.Keyboard.JustDown(keyENTER)) {
-            this.scene.start("cutScene");  
+            this.scene.start("gameScene");  
         }
     }
   }

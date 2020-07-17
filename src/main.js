@@ -19,7 +19,6 @@ var config = {
 
 var game = new Phaser.Game(config);
 
-var cameras;
 var map;
 var demon;
 var player;

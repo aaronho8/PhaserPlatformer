@@ -4,7 +4,7 @@ class Menu extends Phaser.Scene {
     }
      
     create() {
-            // menu display
+        // menu display
         var menuConfig = {
             fontFamily: 'Comic Sans MS',
             fontSize: '24px',

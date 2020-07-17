@@ -147,9 +147,9 @@ class Game extends Phaser.Scene {
 
 
 
-        text = this.add.text(20, 570, '0', {
-            fontSize: '20px',
-            fill: '#ffffff'
+        text = this.add.text(20, 550, '0', {
+            fontSize: '50px',
+            fill: '#00ff00'
         });
         text.setScrollFactor(0);
     }

@@ -94,7 +94,7 @@ class Game extends Phaser.Scene {
         demon = new Demon(this, 500, 440, 'demon', 0, 30).setOrigin(0,0);  
 
         // small fix to our player and demon images, we resize the physics body object slightly
-        player.body.setSize(player.width - 48, player.height - 18);
+        //player.body.setSize(player.width - 48, player.height - 18);
 
         demon.setScale(3);
         demon.setSize(demon.width, demon.height + 48);
@@ -102,7 +102,7 @@ class Game extends Phaser.Scene {
         // player will collide with the level tiles 
         this.physics.add.collider(groundLayer, player);
       
-       coinLayer.setTileIndexCallback(17, collectCoin, this.function); // the coin id is 17
+       coinLayer.setTileIndexCallback(17, this.collectCoin, this.function); // the coin id is 17
         // when the player overlaps with a tile with index 17, collectCoin will be called    
         this.physics.add.overlap(player, coinLayer);
 

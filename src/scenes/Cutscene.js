@@ -3,7 +3,31 @@ class Cutscene extends Phaser.Scene {
       super("cutScene");
     }
      
+
+    preload() {
+        // map made with Tiled in JSON format
+        this.load.tilemapTiledJSON('map', 'assets/cutscene.json');
+
+        // tiles in spritesheet 
+        this.load.spritesheet('tiles', 'assets/bedroom.png', {frameWidth: 70, frameHeight: 70});
+    }
+
     create() {
+
+         // load the map 
+         map = this.make.tilemap({key: 'map'});
+    
+         // tiles for the ground layer
+         var groundTiles = map.addTilesetImage('tiles');
+         // create the ground layer
+         groundLayer = map.createDynamicLayer('World', groundTiles, 0, 0);
+         // the player will collide with this layer
+         groundLayer.setCollisionByExclusion([-1]);
+
+
+
+
+
         this.add.rectangle(0, 0, 2200, 540, 0x87ceeb).setOrigin(0, 0);
         this.add.rectangle(0, 500, 2200, 200, 0x9b7653).setOrigin(0, 0);
 

@@ -26,11 +26,6 @@ class Game extends Phaser.Scene {
         //  game music
         this.load.audio('music', './assets/gamemusic.mp3');
     }
-    
-
-    
-
-
 
     create() {
         //music
@@ -140,9 +135,6 @@ class Game extends Phaser.Scene {
         this.cameras.main.setBackgroundColor('#000000');
           
         this.heartAttack = new Heartbreak(this, 2200, 210, 'heart', 0, 30).setOrigin(0,0);
-
-
-
 
         text = this.add.text(20, 550, '0', {
             fontSize: '50px',

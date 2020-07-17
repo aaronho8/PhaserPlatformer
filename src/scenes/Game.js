@@ -33,9 +33,6 @@ class Game extends Phaser.Scene {
 
 
     create() {
-
-         
-    
         //music
         this.music = this.sound.add('music');
         var musicConfig = {
@@ -153,10 +150,6 @@ class Game extends Phaser.Scene {
         });
         text.setScrollFactor(0);
     }
-
-    
-    
-    
     
     update(time, delta) {
         this.heartAttack.update();

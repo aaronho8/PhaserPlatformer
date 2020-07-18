@@ -42,7 +42,7 @@ class Game extends Phaser.Scene {
         this.music.play(musicConfig);
     
         //  replace with sky blue
-        this.add.rectangle(0, 0, 500, 540, 0x87ceeb).setOrigin(0, 0);
+        this.add.rectangle(0, 0, 2200, 540, 0x87ceeb).setOrigin(0, 0);
         this.add.rectangle(0, 500, 2200, 200, 0x9b7653).setOrigin(0, 0);
         this.add.image(-350, -300, 'sun').setScale(3).setOrigin(0,0);
         this.add.image(80, 50, 'bigCloud').setScale(3).setOrigin(0,0);

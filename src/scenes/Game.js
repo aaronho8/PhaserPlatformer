@@ -88,7 +88,7 @@ class Game extends Phaser.Scene {
         // small fix to our player and demon images, we resize the physics body object slightly
         //player.body.setSize(player.width - 48, player.height - 18);
 
-        demon.setScale(3);
+        demon.setScale(4);
         demon.setSize(demon.width, demon.height + 48);
         
         // player will collide with the level tiles 

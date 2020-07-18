@@ -31,18 +31,6 @@ class Cutscene extends Phaser.Scene {
          //  replace with sky blue
          this.add.rectangle(0, 0, 2200, 540, 0x87ceeb).setOrigin(0, 0);
          this.add.rectangle(0, 500, 2200, 200, 0x9b7653).setOrigin(0, 0);
-         this.add.image(-350, -300, 'sun').setScale(3).setOrigin(0,0);
-         this.add.image(80, 50, 'bigCloud').setScale(3).setOrigin(0,0);
-         this.add.image(200, 100, 'smallCloud').setScale(3).setOrigin(0,0);
-         this.add.image(360, 80, 'smallCloud').setScale(3).setOrigin(0,0);
-         this.add.image(500, 100, 'bigCloud').setScale(3).setOrigin(0,0);
-         this.add.image(750, 80, 'bigCloud').setScale(3).setOrigin(0,0);
-         this.add.image(1200, 100, 'bigCloud').setScale(3).setOrigin(0,0);
-         this.add.image(1300, 50, 'bigCloud').setScale(3).setOrigin(0,0);
-         this.add.image(1400, 80, 'smallCloud').setScale(3).setOrigin(0,0);
-         this.add.image(1500, 50, 'bigCloud').setScale(3).setOrigin(0,0);
-         this.add.image(1700, 80, 'bigCloud').setScale(3).setOrigin(0,0);
- 
 
         //  replace with grey wall
         this.add.rectangle(250, 250, 1000, 250, 0xA9A9A9).setOrigin(0, 0);
@@ -74,7 +62,6 @@ class Cutscene extends Phaser.Scene {
         this.physics.add.collider(groundLayer, player);
 
         this.camera = this.cameras.main;
-        this.camera.setZoom(2);
 
         // define keys
         keyENTER = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);

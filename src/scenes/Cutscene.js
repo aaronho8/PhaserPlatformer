@@ -21,6 +21,10 @@ class Cutscene extends Phaser.Scene {
         this.load.image('sun', './assets/sun_shiny.png');
         this.load.image('bigCloud', './assets/big_cloud.png');
         this.load.image('smallCloud', './assets/Cloud.png');
+
+
+        //bed asset
+        this.load.image('bed', './assets/bed.png');
     }
 
     create() {
@@ -42,6 +46,10 @@ class Cutscene extends Phaser.Scene {
 
         //  replace with grey wall
         this.add.rectangle(250, 250, 1000, 250, 0xA9A9A9).setOrigin(0, 0);
+
+        //bed
+        this.add.image(300, 325, 'bed').setScale(1).setOrigin(0,0);
+
 
         // load the map 
         map = this.make.tilemap({key: 'map1'});

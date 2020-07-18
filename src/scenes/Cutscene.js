@@ -58,12 +58,15 @@ class Cutscene extends Phaser.Scene {
         this.physics.world.bounds.height = groundLayer.height;
 
         // create the player sprite    
-        player = this.physics.add.sprite(300, 200, 'player').setOrigin(0,0);
+        player = this.physics.add.sprite(500, 340, 'player').setOrigin(0,0);
         player.setBounce(0.2); // our player will bounce from items
         player.setCollideWorldBounds(true); // don't go out of the map
 
         // player will collide with the level tiles 
         this.physics.add.collider(groundLayer, player);
+
+        this.camera = this.cameras.main;
+        this.camera.setZoom(2);
 
         // define keys
         keyENTER = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);

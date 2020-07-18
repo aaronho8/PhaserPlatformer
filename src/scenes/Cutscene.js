@@ -82,7 +82,7 @@ class Cutscene extends Phaser.Scene {
     }
 
     update() {
-        if ((Phaser.Input.Keyboard.JustDown(keyENTER)) && (this.sceneEnd == true)) {
+        if ((Phaser.Input.Keyboard.JustDown(keyENTER))) {
             this.scene.start("gameScene");  
         }
 

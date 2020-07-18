@@ -28,9 +28,9 @@ class Cutscene extends Phaser.Scene {
     }
 
     create() {
-         //  replace with sky blue
-         this.add.rectangle(0, 0, 2200, 540, 0x87ceeb).setOrigin(0, 0);
-         this.add.rectangle(0, 500, 2200, 200, 0x9b7653).setOrigin(0, 0);
+        //  replace with sky blue
+        this.add.rectangle(0, 0, 2200, 540, 0x87ceeb).setOrigin(0, 0);
+        this.add.rectangle(0, 500, 2200, 200, 0x9b7653).setOrigin(0, 0);
 
         //  replace with grey wall
         this.add.rectangle(250, 250, 1000, 250, 0xA9A9A9).setOrigin(0, 0);
@@ -54,22 +54,55 @@ class Cutscene extends Phaser.Scene {
         this.physics.world.bounds.height = groundLayer.height;
 
         // create the player sprite    
-        player = this.physics.add.sprite(500, 340, 'player').setOrigin(0,0);
+        player = this.physics.add.sprite(420, 420, 'player').setOrigin(0,0);
         player.setBounce(0.2); // our player will bounce from items
         player.setCollideWorldBounds(true); // don't go out of the map
+        this.playerMoving = false;
 
         // player will collide with the level tiles 
         this.physics.add.collider(groundLayer, player);
 
         this.camera = this.cameras.main;
 
+        // make the camera follow the player
+        this.camera.startFollow(player);
+        this.camera.setZoom(2);
+        this.fadingIn = true;
+        this.cameraFader();
+
+        // Boolean to check in cutscene is done
+        this.sceneEnd = false;
+
         // define keys
         keyENTER = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
+
+        this.clock = this.time.delayedCall(2500, () => {
+            this.fadingIn = false;
+        }, null, this);
     }
 
     update() {
-        if (Phaser.Input.Keyboard.JustDown(keyENTER)) {
+        if ((Phaser.Input.Keyboard.JustDown(keyENTER)) && (this.sceneEnd == true)) {
             this.scene.start("gameScene");  
+        }
+
+        if ((player.x != 650) && (this.fadingIn == false)) {
+            player.x += 1;
+            this.playerMoving == false;
+        }
+
+        if (this.playerMoving == false && this.dialogueBox == false) {
+
+        }
+        
+    }
+
+    cameraFader() {
+        if (this.fadingIn == true) {
+            this.camera.fadeIn(2000);
+        }
+        else if (this.fadingOut == true) {
+            this.camera.fadeOut(2000);
         }
     }
 }

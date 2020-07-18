@@ -141,50 +141,63 @@ class Game extends Phaser.Scene {
             fill: '#00ff00'
         });
         text.setScrollFactor(0);
+
+        this.allCoins = false;
+        keyENTER = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
     }
     
     update(time, delta) {
-        this.heartAttack.update();
-        demon.update();
-
-        // Player Controls
-        if (cursors.left.isDown)
-        {
-            player.body.setVelocityX(-200);
-            player.anims.play('walk', true); // walk left
-            player.flipX = true; // flip the sprite to the left
+        if ((this.allCoins == true) && (Phaser.Input.Keyboard.JustDown(keyENTER))) {
+            this.scene.start("game1Scene"); 
         }
-        else if (cursors.right.isDown)
-        {
-            player.body.setVelocityX(200);
-            player.anims.play('walk', true);
-            player.flipX = false; // use the original sprite looking to the right
-        } else {
+
+        if (score == 21) {
+            this.allCoins = true;
             player.body.setVelocityX(0);
             player.anims.play('idle', true);
-        }
-        // jump 
-        if (cursors.up.isDown && player.body.onFloor())
-        {
-            player.body.setVelocityY(-500);        
+            this.music.pause();
         }
 
-        // check collisions
-        if(this.checkCollision(player, this.heartAttack)) {
-            this.heartAttack.reset();
-        }
-        if(this.checkCollision(player, demon)) {
-            demon.reset();
+        if(this.allCoins == false) {
+            this.heartAttack.update();
+            demon.update();
+
+            // Player Controls
+            if (cursors.left.isDown)
+            {
+                player.body.setVelocityX(-200);
+                player.anims.play('walk', true); // walk left
+                player.flipX = true; // flip the sprite to the left
+            }
+            else if (cursors.right.isDown)
+            {
+                player.body.setVelocityX(200);
+                player.anims.play('walk', true);
+                player.flipX = false; // use the original sprite looking to the right
+            } else {
+                player.body.setVelocityX(0);
+                player.anims.play('idle', true);
+            }
+            // jump 
+            if (cursors.up.isDown && player.body.onFloor())
+            {
+                player.body.setVelocityY(-500);        
+            }
+
+            // check collisions
+            if(this.checkCollision(player, this.heartAttack)) {
+                this.heartAttack.reset();
+            }
+            if(this.checkCollision(player, demon)) {
+                demon.reset();
+            }
         }
     }
-
-
-    
 
     // this function will be called when the player touches a coin
     collectCoin(sprite, tile) {
         coinLayer.removeTileAt(tile.x, tile.y); // remove the tile/coin
-        score++; // add 10 points to the score
+        score++; // add 1 point to the score
         text.setText(score); // set the text to show the current score
         return false;
     }

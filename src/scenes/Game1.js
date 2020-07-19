@@ -58,7 +58,7 @@ class Game1 extends Phaser.Scene {
       this.add.image(1700, 80, 'bigCloud').setScale(3).setOrigin(0,0);
 
       // load the map 
-      map = this.make.tilemap({key: 'map'});
+      map = this.make.tilemap({key: 'level2'});
   
       // tiles for the ground layer
       var groundTiles = map.addTilesetImage('tiles');

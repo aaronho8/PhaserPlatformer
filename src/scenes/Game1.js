@@ -30,10 +30,10 @@ class Game1 extends Phaser.Scene {
 
   create() {
       //music
-      this.music = this.sound.add('music');
+      this.music = this.sound.add('music1');
       var musicConfig = {
           mute: false,
-          volume: 1,
+          volume: 0.1,
           rate: 1,
           detune: 0,
           seek: 0,

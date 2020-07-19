@@ -24,15 +24,15 @@ class Game extends Phaser.Scene {
         this.load.image('coin', 'assets/coinGold.png');
 
         //  game music
-        this.load.audio('music', './assets/gamemusic.mp3');
+        this.load.audio('music1', './assets/gamemusic.mp3');
     }
 
     create() {
         //music
-        this.music = this.sound.add('music');
+        this.music = this.sound.add('music1');
         var musicConfig = {
             mute: false,
-            volume: 1,
+            volume: 0.1,
             rate: 1,
             detune: 0,
             seek: 0,
@@ -134,7 +134,7 @@ class Game extends Phaser.Scene {
         // set background color, so the sky is not black    
         this.cameras.main.setBackgroundColor('#000000');
           
-        this.heartAttack = new Heartbreak(this, 2200, 210, 'heart', 0, 30).setOrigin(0,0);
+        this.heartAttack = new Heartbreak(this, 2200, 150, 'heart', 0, 30).setOrigin(0,0);
 
         text = this.add.text(20, 550, '0', {
             fontSize: '50px',
@@ -143,6 +143,7 @@ class Game extends Phaser.Scene {
         text.setScrollFactor(0);
 
         this.allCoins = false;
+
         keyENTER = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
     }
     

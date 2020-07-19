@@ -17,7 +17,7 @@ var config = {
     scene: [Menu, Cutscene, Game, Game1]
 }
 
-var game = new Phaser.Game(config);
+let game = new Phaser.Game(config);
 
 var map;
 var demon;

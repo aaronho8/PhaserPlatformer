@@ -2,7 +2,6 @@ class Cutscene extends Phaser.Scene {
     constructor() {
       super("cutScene");
     }
-     
 
     preload() {
         // map made with Tiled in JSON format
@@ -11,7 +10,6 @@ class Cutscene extends Phaser.Scene {
         // tiles in spritesheet 
         this.load.spritesheet('tiles', 'assets/tiles.png', {frameWidth: 70, frameHeight: 70});
         
-   
         // player/sprite animations and animations
         this.load.atlas('player', 'assets/player.png', 'assets/player.json');
         this.load.atlas('demon', 'assets/demon.png', 'assets/demon.json');
@@ -22,12 +20,45 @@ class Cutscene extends Phaser.Scene {
         this.load.image('bigCloud', './assets/big_cloud.png');
         this.load.image('smallCloud', './assets/Cloud.png');
 
-
         //bed asset
         this.load.image('bed', './assets/bed.png');
+
+        // dialogue box asset
+        this.load.image('dBox', './assets/dialogue_box.png');
+
+        //music asset
+        this.load.audio('music', './assets/twlg_bit.mp3');
     }
 
     create() {
+        //music
+        this.music = this.sound.add('music');
+        var musicConfig = {
+            mute: false,
+            volume: 0.012,
+            rate: 1,
+            detune: 0,
+            seek: 0,
+            loop: true,
+            delay: 0
+        }    
+        this.music.play(musicConfig);
+
+        // menu display
+        this.menuConfig = {
+            fontFamily: 'Comic Sans MS',
+            fontSize: '12px',
+            backgroundColor: false,
+            color: '#000000',
+            align: 'left',
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth: 0,
+            wordWrap: { width: 300 }
+        }
+
         //  replace with sky blue
         this.add.rectangle(0, 0, 2200, 540, 0x87ceeb).setOrigin(0, 0);
         this.add.rectangle(0, 500, 2200, 200, 0x9b7653).setOrigin(0, 0);
@@ -70,8 +101,10 @@ class Cutscene extends Phaser.Scene {
         this.fadingIn = true;
         this.cameraFader();
 
-        // Boolean to check in cutscene is done
+        // Booleans for events
         this.sceneEnd = false;
+        this.dialogueBox = false;
+        this.playerMoving = true;
 
         // define keys
         keyENTER = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
@@ -82,17 +115,27 @@ class Cutscene extends Phaser.Scene {
     }
 
     update() {
-        if ((Phaser.Input.Keyboard.JustDown(keyENTER))) {
+        if ((Phaser.Input.Keyboard.JustDown(keyENTER)) && (this.sceneEnd == true)) {
+            this.music.pause();
             this.scene.start("gameScene");  
         }
 
         if ((player.x != 650) && (this.fadingIn == false)) {
             player.x += 1;
-            this.playerMoving == false;
+            if (player.x == 649) {
+                this.playerMoving = false;
+            }
         }
 
         if (this.playerMoving == false && this.dialogueBox == false) {
-
+            if (player.body.onFloor() && this.dialogueBox == false) {
+                player.body.setVelocityY(-120);
+                this.dialogueBox = true;
+            }   
+            this.add.image(510, 495, 'dBox').setScale(1).setOrigin(0,0);
+            this.add.text(665, 525, "At this rate, she'll never go out with me! Maybe if I can get rich enough, she'll fall for me! I should go look for coins.", this.menuConfig).setOrigin(0.5);
+            this.add.text(720, 555, "PRESS ENTER TO GET THAT BAG", this.menuConfig).setOrigin(0.5);
+            this.sceneEnd = true;
         }
         
     }

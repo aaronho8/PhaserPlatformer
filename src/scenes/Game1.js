@@ -6,7 +6,7 @@ class Game1 extends Phaser.Scene {
 
     preload() {
       // map made with Tiled in JSON format
-      this.load.tilemapTiledJSON('map1', 'assets/map1.json');
+      this.load.tilemapTiledJSON('level2', 'assets/level2.json');
 
       // tiles in spritesheet 
       this.load.spritesheet('tiles', 'assets/tiles.png', {frameWidth: 70, frameHeight: 70});

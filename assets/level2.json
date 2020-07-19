@@ -5,7 +5,7 @@
      "export":
         {
          "format":"json",
-         "target":"map1.json"
+         "target":"level2.json"
         }
     },
  "height":10,

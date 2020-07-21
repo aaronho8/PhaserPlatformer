@@ -101,6 +101,30 @@ class Cutscene extends Phaser.Scene {
         this.fadingIn = true;
         this.cameraFader();
 
+        // player walk animation
+        this.anims.create({
+            key: 'walk',
+            frames: this.anims.generateFrameNames('player', {
+              prefix: 'player_',
+              start: 2,
+              end: 3,
+            }),
+            frameRate: 10,
+            repeat: -1
+          });
+        // idle with only one frame, so repeat is not neaded
+        this.anims.create({
+            key: 'idle',
+            frames: [{key: 'player', frame: 'player_0'}],
+            frameRate: 10,
+        });
+    
+        this.anims.create({
+            key: 'jump',
+            frames: [{ key: 'player', frame: 'player_1' }],
+            frameRate: 10,
+          });
+
         // Booleans for events
         this.sceneEnd = false;
         this.dialogueBox = false;
@@ -122,6 +146,7 @@ class Cutscene extends Phaser.Scene {
 
         if ((player.x != 650) && (this.fadingIn == false)) {
             player.x += 1;
+            player.anims.play('walk', true);
             if (player.x == 649) {
                 this.playerMoving = false;
             }

@@ -84,7 +84,7 @@ class Game1 extends Phaser.Scene {
       player.setCollideWorldBounds(true); // don't go out of the map    
       
       //create the demon sprite
-      demon = new Demon(this, 500, 440, 'demon', 0, 30).setOrigin(0,0);  
+      demon = new Demon(this, 2200, 430, 'demon', 0, 30).setOrigin(0,0);  
 
       // small fix to our player and demon images, we resize the physics body object slightly
       //player.body.setSize(player.width - 48, player.height - 18);
@@ -149,6 +149,12 @@ class Game1 extends Phaser.Scene {
   
   update(time, delta) {
      
+    if (score == 37) {
+        this.allCoins = true;
+        player.body.setVelocityX(0);
+        player.anims.play('idle', true);
+        this.music.pause();
+    }
 
       if(this.allCoins == false) {
           this.heartAttack.update();

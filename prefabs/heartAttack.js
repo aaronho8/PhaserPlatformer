@@ -14,6 +14,6 @@ class Heartbreak extends Phaser.GameObjects.Sprite {
     }
 
     reset(){
-        this.x = 2200;
+        this.x = 2500;
     }
 }

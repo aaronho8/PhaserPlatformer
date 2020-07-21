@@ -23,8 +23,9 @@ class Game1 extends Phaser.Scene {
       // simple coin image
       this.load.image('coin', 'assets/coinGold.png');
 
-      //  game music
+      //  game music/sound
       this.load.audio('music', './assets/gamemusic.mp3');
+      this.load.audio('coin', './assets/coin.mp3');
   }
 
   create() {
@@ -40,18 +41,14 @@ class Game1 extends Phaser.Scene {
           delay: 0
       }    
       this.music.play(musicConfig);
-  
+
       //  replace with sky blue
       this.add.rectangle(0, 0, 2200, 540, 0xFF4500).setOrigin(0, 0);
-      this.add.rectangle(0, 500, 2200, 200, 0x9b7653).setOrigin(0, 0);
-      
       this.add.image(0, 0, 'volcano').setScale(3).setOrigin(0,0);
       this.add.image(500, 0, 'volcano').setScale(3).setOrigin(0,0);
-
       this.add.image(1000, 0, 'volcano').setScale(3).setOrigin(0,0);
       this.add.image(1500, 0, 'volcano').setScale(3).setOrigin(0,0);
-
-
+      this.add.rectangle(0, 500, 2200, 200, 0x9b7653).setOrigin(0, 0);
 
       // load the map 
       map = this.make.tilemap({key: 'level2'});
@@ -140,6 +137,10 @@ class Game1 extends Phaser.Scene {
       text.setScrollFactor(0);
 
       this.allCoins = false;
+
+      txt = this.add.text(680, 15, 'Lives: ' + lives, this.menuConfig1);
+        txt.setScrollFactor(0);
+
       keyENTER = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
   }
   
@@ -152,7 +153,18 @@ class Game1 extends Phaser.Scene {
         this.music.pause();
     }
 
-      if(this.allCoins == false) {
+    if (lives == 0) {
+        player.body.setVelocityX(0);
+        player.anims.play('idle', true);
+        this.music.pause();
+        
+        this.deadTxt = this.add.text(player.x - 100, player.y - 150, 'You have died! Press enter to go into the afterlife!', this.menuConfig1);
+        if (Phaser.Input.Keyboard.JustDown(keyENTER)) {
+            this.scene.start("deadScene"); 
+        }
+    }
+
+      if(this.allCoins == false && lives > 0) {
           this.heartAttack.update();
           demon.update();
 
@@ -180,9 +192,13 @@ class Game1 extends Phaser.Scene {
 
           // check collisions
           if(this.checkCollision(player, this.heartAttack)) {
+                lives--;
+                txt.setText('Lives:' + lives);
               this.heartAttack.reset();
           }
           if(this.checkCollision(player, demon)) {
+                lives--;
+                txt.setText('Lives:' + lives);
               demon.reset();
           }
       }

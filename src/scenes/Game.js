@@ -28,6 +28,21 @@ class Game extends Phaser.Scene {
     }
 
     create() {
+        // menu display
+        this.menuConfig1 = {
+            fontFamily: 'Comic Sans MS',
+            fontSize: '24px',
+            backgroundColor: false,
+            color: '#000000',
+            align: 'left',
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth: 0,
+            wordWrap: { width: 300 }
+        }
+
         //music
         this.music = this.sound.add('music1');
         var musicConfig = {
@@ -98,8 +113,6 @@ class Game extends Phaser.Scene {
         // when the player overlaps with a tile with index 17, collectCoin will be called    
         this.physics.add.overlap(player, coinLayer);
 
-    
-
         // player walk animation
         this.anims.create({
             key: 'walk',
@@ -144,6 +157,9 @@ class Game extends Phaser.Scene {
 
         this.allCoins = false;
 
+        txt = this.add.text(680, 15, 'Lives: ' + lives, this.menuConfig1);
+        txt.setScrollFactor(0);
+
         keyENTER = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
     }
     
@@ -159,7 +175,18 @@ class Game extends Phaser.Scene {
             this.music.pause();
         }
 
-        if(this.allCoins == false) {
+        if (lives == 0) {
+            player.body.setVelocityX(0);
+            player.anims.play('idle', true);
+            this.music.pause();
+            
+            this.deadTxt = this.add.text(player.x - 100, player.y - 150, 'You have died! Press enter to go into the afterlife!', this.menuConfig1);
+            if (Phaser.Input.Keyboard.JustDown(keyENTER)) {
+                this.scene.start("deadScene"); 
+            }
+        }
+
+        if(this.allCoins == false && lives > 0) {
             this.heartAttack.update();
             demon.update();
 
@@ -187,9 +214,13 @@ class Game extends Phaser.Scene {
 
             // check collisions
             if(this.checkCollision(player, this.heartAttack)) {
+                lives--;
+                txt.setText('Lives: ' + lives);
                 this.heartAttack.reset();
             }
             if(this.checkCollision(player, demon)) {
+                lives--;
+                txt.setText('Lives: ' + lives);
                 demon.reset();
             }
         }

@@ -35,7 +35,7 @@ class Cutscene extends Phaser.Scene {
         this.music = this.sound.add('music');
         var musicConfig = {
             mute: false,
-            volume: 0.012,
+            volume: 0.015,
             rate: 1,
             detune: 0,
             seek: 0,

@@ -9,6 +9,7 @@ class Menu extends Phaser.Scene {
 
         //music asset
         this.load.audio('music0', './assets/ld.mp3');
+        this.load.audio('coin', './assets/coin.mp3');
     }
 
     create() {
@@ -17,7 +18,7 @@ class Menu extends Phaser.Scene {
         this.music = this.sound.add('music0');
         var musicConfig = {
             mute: false,
-            volume: 0.05,
+            volume: 0.07,
             rate: 1,
             detune: 0,
             seek: 0,

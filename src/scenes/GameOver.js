@@ -55,9 +55,7 @@ class Dead extends Phaser.Scene {
         }
 
         if (this.fadingIn == false) {
-            this.graveTxt = this.add.text(this.player2.x - 100, this.player2.y - 150, "This can't be it! I have to date her! I can't die yet!", this.menuConfig2);
-            this.resurrectTxt = this.add.text(this.player2.x - 100, this.player2.y - 300, "Press Enter to Ressurect", this.menuConfig2);
-            this.menuTxt = this.add.text(this.player2.x - 100, this.player2.y - 350, "Press Left to Die", this.menuConfig2);
+            this.graveTxt = this.add.text(this.player2.x - 150, this.player2.y - 150, "This can't be it! I have to date her! I can't die yet! Press Enter to Ressurect or Press Left to Die", this.menuConfig2);
         }
     }
 

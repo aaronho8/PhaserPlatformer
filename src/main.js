@@ -5,12 +5,10 @@
 
 var config = {
     type: Phaser.AUTO,
-<<<<<<< HEAD
     render: {
         pixelArt: true},
     
-=======
->>>>>>> parent of d08fc88... pixel true
+
     width: 800,
     height: 600,
     physics: {

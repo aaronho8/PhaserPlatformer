@@ -168,7 +168,7 @@ class Game extends Phaser.Scene {
             this.scene.start("game1Scene"); 
         }
 
-        if (score == 27) {
+        if (score == 20) {
             this.allCoins = true;
             player.body.setVelocityX(0);
             player.anims.play('idle', true);

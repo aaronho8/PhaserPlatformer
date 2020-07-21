@@ -33,7 +33,7 @@ class Game1 extends Phaser.Scene {
       this.music = this.sound.add('music1');
       var musicConfig = {
           mute: false,
-          volume: 0.09,
+          volume: 0.1,
           rate: 1,
           detune: 0,
           seek: 0,
@@ -41,15 +41,13 @@ class Game1 extends Phaser.Scene {
           delay: 0
       }    
       this.music.play(musicConfig);
-  
-      this.add.image(0, 0, 'volcano').setScale(3).setOrigin(0,0);
-      this.add.image(500, 0, 'volcano').setScale(3).setOrigin(0,0);
-
-      this.add.image(1000, 0, 'volcano').setScale(3).setOrigin(0,0);
-      this.add.image(1500, 0, 'volcano').setScale(3).setOrigin(0,0);
 
       //  replace with sky blue
       this.add.rectangle(0, 0, 2200, 540, 0xFF4500).setOrigin(0, 0);
+      this.add.image(0, 0, 'volcano').setScale(3).setOrigin(0,0);
+      this.add.image(500, 0, 'volcano').setScale(3).setOrigin(0,0);
+      this.add.image(1000, 0, 'volcano').setScale(3).setOrigin(0,0);
+      this.add.image(1500, 0, 'volcano').setScale(3).setOrigin(0,0);
       this.add.rectangle(0, 500, 2200, 200, 0x9b7653).setOrigin(0, 0);
 
       // load the map 

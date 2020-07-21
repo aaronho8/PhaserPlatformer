@@ -47,7 +47,7 @@ class Game extends Phaser.Scene {
         this.music = this.sound.add('music1');
         var musicConfig = {
             mute: false,
-            volume: 0.2,
+            volume: 0.01,
             rate: 1,
             detune: 0,
             seek: 0,
@@ -175,7 +175,18 @@ class Game extends Phaser.Scene {
             this.music.pause();
         }
 
-        if(this.allCoins == false) {
+        if (lives == 0) {
+            player.body.setVelocityX(0);
+            player.anims.play('idle', true);
+            this.music.pause();
+            
+            this.deadTxt = this.add.text(player.x - 100, player.y - 150, 'You have died! Press enter to go into the afterlife!', this.menuConfig1);
+            if (Phaser.Input.Keyboard.JustDown(keyENTER)) {
+                this.scene.start("deadScene"); 
+            }
+        }
+
+        if(this.allCoins == false && lives > 0) {
             this.heartAttack.update();
             demon.update();
 
@@ -204,12 +215,12 @@ class Game extends Phaser.Scene {
             // check collisions
             if(this.checkCollision(player, this.heartAttack)) {
                 lives--;
-                txt.setText('Lives:' + lives);
+                txt.setText('Lives: ' + lives);
                 this.heartAttack.reset();
             }
             if(this.checkCollision(player, demon)) {
                 lives--;
-                txt.setText('Lives:' + lives);
+                txt.setText('Lives: ' + lives);
                 demon.reset();
             }
         }

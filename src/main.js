@@ -14,7 +14,7 @@ var config = {
             debug: false
         }
     },
-    scene: [Menu, Cutscene, Game, Game1]
+    scene: [Menu, Cutscene, Game, Game1, Dead]
 }
 
 let game = new Phaser.Game(config);
@@ -32,4 +32,4 @@ var text;
 var score = 0;
 
 
-let keyENTER;
+let keyENTER, keyLEFT;

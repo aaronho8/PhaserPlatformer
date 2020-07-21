@@ -32,7 +32,7 @@ class Dead extends Phaser.Scene {
 
         // make the camera follow the player
         this.camera.startFollow(this.player2);
-        this.camera.setZoom(2);
+        this.camera.setZoom(1.5);
         this.fadingIn = true;
         this.cameraFader();
 

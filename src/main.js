@@ -19,6 +19,8 @@ var config = {
 
 let game = new Phaser.Game(config);
 
+var lives = 3;
+var txt;
 var map;
 var demon;
 var player;

@@ -17,7 +17,7 @@ class Menu extends Phaser.Scene {
         this.music = this.sound.add('music0');
         var musicConfig = {
             mute: false,
-            volume: 0.05,
+            volume: 0.01,
             rate: 1,
             detune: 0,
             seek: 0,

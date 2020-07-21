@@ -144,6 +144,10 @@ class Game1 extends Phaser.Scene {
       text.setScrollFactor(0);
 
       this.allCoins = false;
+
+      txt = this.add.text(680, 15, 'Lives: ' + lives, this.menuConfig1);
+        txt.setScrollFactor(0);
+
       keyENTER = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
   }
   
@@ -184,9 +188,13 @@ class Game1 extends Phaser.Scene {
 
           // check collisions
           if(this.checkCollision(player, this.heartAttack)) {
+                lives--;
+                txt.setText('Lives:' + lives);
               this.heartAttack.reset();
           }
           if(this.checkCollision(player, demon)) {
+                lives--;
+                txt.setText('Lives:' + lives);
               demon.reset();
           }
       }

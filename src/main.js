@@ -5,6 +5,7 @@
 
 var config = {
     type: Phaser.AUTO,
+    pixelArt: true,
     width: 800,
     height: 600,
     physics: {

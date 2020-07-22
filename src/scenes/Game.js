@@ -40,7 +40,7 @@ class Game extends Phaser.Scene {
                 bottom: 5,
             },
             fixedWidth: 0,
-            wordWrap: { width: 300 }
+            wordWrap: { width: 500 }
         }
 
         //music
@@ -149,16 +149,13 @@ class Game extends Phaser.Scene {
           
         this.heartAttack = new Heartbreak(this, 2200, 150, 'heart', 0, 30).setOrigin(0,0);
 
-        text = this.add.text(20, 550, '0', {
-            fontSize: '50px',
-            fill: '#00ff00'
-        });
-        text.setScrollFactor(0);
-
         this.allCoins = false;
 
         txt = this.add.text(680, 15, 'Lives: ' + lives, this.menuConfig1);
         txt.setScrollFactor(0);
+
+        objTxt = this.add.text(10, 15, 'Obtain Coins to get the Girl: ' + score + ' /20', this.menuConfig1);
+        objTxt.setScrollFactor(0);
 
         keyENTER = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
     }
@@ -230,7 +227,7 @@ class Game extends Phaser.Scene {
     collectCoin(sprite, tile) {
         coinLayer.removeTileAt(tile.x, tile.y); // remove the tile/coin
         score++; // add 1 point to the score
-        text.setText(score); // set the text to show the current score
+        objTxt.setText('Obtain Coins to get the Girl: ' + score + ' /20');
         return false;
     }
 

@@ -6,8 +6,8 @@
 var config = {
     type: Phaser.AUTO,
     render: {
-        pixelArt: true},
-    
+        pixelArt: true
+    },
 
     width: 800,
     height: 600,
@@ -18,12 +18,13 @@ var config = {
             debug: false
         }
     },
-    scene: [Menu, Cutscene, Game, Game1, Dead]
+    scene: [Menu, Cutscene, Game, Game1, Dead, End]
 }
 
 let game = new Phaser.Game(config);
 
 var lives = 3;
+var objTxt;
 var txt;
 var map;
 var demon;

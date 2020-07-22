@@ -45,12 +45,17 @@ class Dead extends Phaser.Scene {
     }
 
     update() {
-        if ((Phaser.Input.Keyboard.JustDown(keyENTER))) {
-            this.music.pause();
+        if (Phaser.Input.Keyboard.JustDown(keyENTER) && this.fadingIn == false) {
+            //this.music.pause();
+            score = 0;
+            lives = 3;
             this.scene.start("cutScene");  
         }
 
-        if (Phaser.Input.Keyboard.JustDown(keyLEFT)) {
+        if (Phaser.Input.Keyboard.JustDown(keyLEFT) && this.fadingIn == false) {
+            //this.music.pause();
+            score = 0;
+            lives = 3;
             this.scene.start("menuScene");
         }
 

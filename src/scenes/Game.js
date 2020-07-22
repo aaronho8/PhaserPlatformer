@@ -162,10 +162,12 @@ class Game extends Phaser.Scene {
     
     update(time, delta) {
         if ((this.allCoins == true) && (Phaser.Input.Keyboard.JustDown(keyENTER))) {
+            player.body.setEnable();
             this.scene.start("game1Scene"); 
         }
 
         if (score == 20) {
+            player.body.setEnable(false);
             this.allCoins = true;
             player.body.setVelocityX(0);
             player.anims.play('idle', true);
@@ -173,12 +175,13 @@ class Game extends Phaser.Scene {
         }
 
         if (lives == 0) {
-            player.body.setVelocityX(0);
+            player.body.setEnable(false);
             player.anims.play('idle', true);
             this.music.pause();
             
             this.deadTxt = this.add.text(player.x - 100, player.y - 150, 'You have died! Press enter to go into the afterlife!', this.menuConfig1);
             if (Phaser.Input.Keyboard.JustDown(keyENTER)) {
+                player.body.setEnable();
                 this.scene.start("deadScene"); 
             }
         }

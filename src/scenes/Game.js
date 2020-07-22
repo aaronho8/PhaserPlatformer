@@ -179,7 +179,7 @@ class Game extends Phaser.Scene {
             player.anims.play('idle', true);
             this.music.pause();
             
-            this.deadTxt = this.add.text(player.x - 100, player.y - 150, 'You have died! Press enter to go into the afterlife!', this.menuConfig1);
+            this.deadTxt = this.add.text(player.x / 2, player.y / 2, 'You have died! Press enter to go into the afterlife!', this.menuConfig1);
             if (Phaser.Input.Keyboard.JustDown(keyENTER)) {
                 player.body.setEnable();
                 this.scene.start("deadScene"); 

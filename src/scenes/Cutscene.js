@@ -169,8 +169,5 @@ class Cutscene extends Phaser.Scene {
         if (this.fadingIn == true) {
             this.camera.fadeIn(2000);
         }
-        else if (this.fadingOut == true) {
-            this.camera.fadeOut(2000);
-        }
     }
 }

@@ -134,14 +134,14 @@ class Game1 extends Phaser.Scene {
         txt = this.add.text(680, 15, 'Lives: ' + lives, this.menuConfig1);
         txt.setScrollFactor(0);
 
-        objTxt = this.add.text(10, 15, 'Obtain Coins to get the Girl: ' + score + ' /37', this.menuConfig1);
+        objTxt = this.add.text(10, 15, 'Obtain Coins to get the Girl: ' + score + ' /40', this.menuConfig1);
         objTxt.setScrollFactor(0);
 
         keyENTER = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
     }
   
     update(time, delta) {
-        if (score == 37) {
+        if (score == 40) {
             player.body.setEnable(false);
             this.allCoins = true;
             player.body.setVelocityX(0);
@@ -206,7 +206,7 @@ class Game1 extends Phaser.Scene {
     collectCoin(sprite, tile) {
         coinLayer.removeTileAt(tile.x, tile.y); // remove the tile/coin
         score++; // add 1 point to the score
-        objTxt.setText('Obtain Coins to get the Girl: ' + score + ' /37');
+        objTxt.setText('Obtain Coins to get the Girl: ' + score + ' /40');
         return false;
     }
 

@@ -51,9 +51,15 @@ class Menu extends Phaser.Scene {
         centerX = game.config.width / 2;
         centerY = game.config.height / 2;
         menuConfig.color = '#4287f5';
-        this.add.text(centerX, centerY + textSpacer, 'Press ENTER to Begin Journey', menuConfig).setOrigin(0.5);
+
+        this.cameras.main.fadeIn(2000);
+
         this.add.image(60, 520, 'player1');
         this.add.image(740, 520, 'girl');
+
+        this.clock = this.time.delayedCall(3000, () => {
+            this.add.text(centerX, centerY + textSpacer, 'Press ENTER to Begin Journey', menuConfig).setOrigin(0.5);
+        }, null, this);
 
         // define keys
         keyENTER = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);

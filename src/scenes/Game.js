@@ -43,6 +43,20 @@ class Game extends Phaser.Scene {
             wordWrap: { width: 500 }
         }
 
+        this.deadConfig = {
+            fontFamily: 'Arial',
+            fontSize: '24px',
+            backgroundColor: false,
+            color: '#000000',
+            align: 'left',
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth: 0,
+            wordWrap: { width: 300 }
+        }
+
         //music
         this.music = this.sound.add('music1');
         var musicConfig = {
@@ -179,7 +193,7 @@ class Game extends Phaser.Scene {
             player.anims.play('idle', true);
             this.music.pause();
             
-            this.deadTxt = this.add.text(player.x, player.y + 50, 'You have died! Press enter to go into the afterlife!', this.menuConfig1);
+            this.deadTxt = this.add.text(player.x - 130, player.y + 40, 'You have died! Press enter to go into the afterlife!', this.deadConfig);
             if (Phaser.Input.Keyboard.JustDown(keyENTER)) {
                 player.body.setEnable();
                 this.scene.start("deadScene"); 

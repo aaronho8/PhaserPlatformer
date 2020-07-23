@@ -59,7 +59,10 @@ class Menu extends Phaser.Scene {
         this.add.image(740, 520, 'girl');
 
         this.clock = this.time.delayedCall(3000, () => {
-            this.add.text(centerX, centerY + textSpacer, 'Press ENTER to Begin Journey', menuConfig).setOrigin(0.5);
+            this.add.text(centerX, centerY + 30, 'Arrow Keys to Move, Space to Jump, ENTER to proceed to next Level', menuConfig).setOrigin(0.5);
+            this.clock = this.time.delayedCall(3000, () => {
+                this.add.text(centerX, centerY + textSpacer, 'Press ENTER to Begin Journey', menuConfig).setOrigin(0.5);
+            }, null, this);
         }, null, this);
 
         // define keys
@@ -69,7 +72,7 @@ class Menu extends Phaser.Scene {
     update() {
         if (Phaser.Input.Keyboard.JustDown(keyENTER)) {
             this.music.pause();
-            this.scene.start("deadScene");  
+            this.scene.start("cutScene");  
         }
     }
   }

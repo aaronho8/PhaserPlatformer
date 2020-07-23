@@ -165,7 +165,7 @@ class Game1 extends Phaser.Scene {
             this.allCoins = true;
             player.body.setVelocityX(0);
             player.anims.play('idle', true);
-            this.finishTxt = this.add.text(objTxt.x + 100, objTxt.y + 240, "You're rich enough to ask her out! Press Enter to finally find love!", this.menuConfig1);
+            this.finishTxt = this.add.text(objTxt.x + 110, objTxt.y + 240, "You're rich enough to ask her out! Press Enter to finally find love!", this.menuConfig1);
             this.finishTxt.setScrollFactor(0);
             this.music.pause();
         }

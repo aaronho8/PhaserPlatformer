@@ -46,7 +46,8 @@ class Menu extends Phaser.Scene {
         let centerY = game.config.height / 2;
         let textSpacer = 64;
 
-    
+        this.add.rectangle(0, 0, 800, 600, 0xab433c).setOrigin(0, 0);
+
         this.add.text(centerX, centerY - textSpacer, 'The Way Life Goes', menuConfig).setOrigin(0.5);
         centerX = game.config.width / 2;
         centerY = game.config.height / 2;

@@ -29,6 +29,21 @@ class Game1 extends Phaser.Scene {
     }
 
     create() {
+        // menu display
+        this.menuConfig1 = {
+            fontFamily: 'Arial',
+            fontSize: '24px',
+            backgroundColor: false,
+            color: '#000000',
+            align: 'left',
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth: 0,
+            wordWrap: { width: 600 }
+        }
+
         this.deadConfig = {
             fontFamily: 'Arial',
             fontSize: '24px',
@@ -165,7 +180,7 @@ class Game1 extends Phaser.Scene {
             this.allCoins = true;
             player.body.setVelocityX(0);
             player.anims.play('idle', true);
-            this.finishTxt = this.add.text(objTxt.x + 110, objTxt.y + 240, "You're rich enough to ask her out! Press Enter to finally find love!", this.menuConfig1);
+            this.finishTxt = this.add.text(objTxt.x + 90, objTxt.y + 240, "You're rich enough to ask her out! Press Enter to finally find love!", this.deadConfig);
             this.finishTxt.setScrollFactor(0);
             this.music.pause();
         }

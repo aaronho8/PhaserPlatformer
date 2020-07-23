@@ -165,7 +165,7 @@ class Game1 extends Phaser.Scene {
             this.allCoins = true;
             player.body.setVelocityX(0);
             player.anims.play('idle', true);
-            this.finishTxt = this.add.text(objTxt.x + 120, objTxt.y + 240, 'All coins obtained this level! Press ENTER to proceed', this.menuConfig1);
+            this.finishTxt = this.add.text(objTxt.x + 120, objTxt.y + 240, "You're rich enough to ask her out! Press Enter to finally find love!", this.menuConfig1);
             this.finishTxt.setScrollFactor(0);
             this.music.pause();
         }
@@ -173,7 +173,7 @@ class Game1 extends Phaser.Scene {
         if (lives == 0) {           
             player.destroy();
             this.music.pause();
-            this.deadTxt = this.add.text(objTxt.x + 280, objTxt.y + 240, 'You have died! Press enter to go into the afterlife!', this.deadConfig);
+            this.deadTxt = this.add.text(objTxt.x + 280, objTxt.y + 240, 'You have died! Press Enter to go into the afterlife!', this.deadConfig);
             this.deadTxt.setScrollFactor(0);
             if (Phaser.Input.Keyboard.JustDown(keyENTER)) {
                 this.scene.start("deadScene"); 

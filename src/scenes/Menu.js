@@ -28,7 +28,7 @@ class Menu extends Phaser.Scene {
         this.music.play(musicConfig);
 
         // menu display
-        var menuConfig = {
+        this.menuConfig = {
             fontFamily: 'Arial',
             fontSize: '24px',
             backgroundColor: false,
@@ -48,10 +48,10 @@ class Menu extends Phaser.Scene {
 
         this.add.rectangle(0, 0, 800, 600, 0xab433c).setOrigin(0, 0);
 
-        this.add.text(centerX, centerY - textSpacer, 'The Way Life Goes', menuConfig).setOrigin(0.5);
+        this.add.text(centerX, centerY - textSpacer, 'The Way Life Goes', this.menuConfig).setOrigin(0.5);
         centerX = game.config.width / 2;
         centerY = game.config.height / 2;
-        menuConfig.color = '#4287f5';
+        this.menuConfig.color = '#4287f5';
 
         this.cameras.main.fadeIn(2000);
 
@@ -59,9 +59,9 @@ class Menu extends Phaser.Scene {
         this.add.image(740, 520, 'girl');
 
         this.clock = this.time.delayedCall(3000, () => {
-            this.add.text(centerX, centerY + 30, 'Arrow Keys to Move, Space to Jump', menuConfig).setOrigin(0.5);
+            this.add.text(centerX, centerY + 30, 'Arrow Keys to Move, Space to Jump', this.menuConfig).setOrigin(0.5);
             this.clock = this.time.delayedCall(3000, () => {
-                this.add.text(centerX, centerY + textSpacer, 'Press ENTER to Begin Journey', menuConfig).setOrigin(0.5);
+                this.add.text(centerX, centerY + textSpacer, 'Press ENTER to Begin Journey', this.menuConfig).setOrigin(0.5);
             }, null, this);
         }, null, this);
 
@@ -72,7 +72,7 @@ class Menu extends Phaser.Scene {
     update() {
         if (Phaser.Input.Keyboard.JustDown(keyENTER)) {
             this.music.pause();
-            this.scene.start("endScene");  
+            this.scene.start("cutScene");  
         }
     }
   }

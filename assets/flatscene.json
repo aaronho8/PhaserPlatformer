@@ -5,7 +5,7 @@
      "export":
         {
          "format":"json",
-         "target":"map.json"
+         "target":"flatscene.json"
         }
     },
  "height":10,

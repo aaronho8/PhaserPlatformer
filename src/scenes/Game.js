@@ -162,7 +162,7 @@ class Game extends Phaser.Scene {
         // set background color, so the sky is not black    
         this.cameras.main.setBackgroundColor('#000000');
           
-        this.heartAttack = new Heartbreak(this, 2200, 150, 'heart', 0, 30).setOrigin(0,0);
+        this.heartAttack = new Heartbreak(this, 2200, 95, 'heart', 0, 30).setOrigin(0,0);
 
         this.allCoins = false;
 

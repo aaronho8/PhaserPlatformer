@@ -29,7 +29,7 @@ class Menu extends Phaser.Scene {
 
         // menu display
         var menuConfig = {
-            fontFamily: 'Comic Sans MS',
+            fontFamily: 'Arial',
             fontSize: '24px',
             backgroundColor: false,
             color: '#4287f5',
@@ -62,7 +62,7 @@ class Menu extends Phaser.Scene {
     update() {
         if (Phaser.Input.Keyboard.JustDown(keyENTER)) {
             this.music.pause();
-            this.scene.start("cutScene");  
+            this.scene.start("deadScene");  
         }
     }
   }

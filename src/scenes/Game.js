@@ -30,7 +30,7 @@ class Game extends Phaser.Scene {
     create() {
         // menu display
         this.menuConfig1 = {
-            fontFamily: 'Comic Sans MS',
+            fontFamily: 'Arial',
             fontSize: '24px',
             backgroundColor: false,
             color: '#000000',

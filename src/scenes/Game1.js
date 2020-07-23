@@ -141,6 +141,11 @@ class Game1 extends Phaser.Scene {
     }
   
     update(time, delta) {
+        if ((this.allCoins == true) && (Phaser.Input.Keyboard.JustDown(keyENTER))) {
+            player.body.setEnable();
+            this.scene.start("endScene"); 
+        }
+
         if (score == 40) {
             player.body.setEnable(false);
             this.allCoins = true;

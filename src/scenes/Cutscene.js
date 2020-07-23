@@ -46,7 +46,7 @@ class Cutscene extends Phaser.Scene {
 
         // menu display
         this.menuConfig = {
-            fontFamily: 'Comic Sans MS',
+            fontFamily: 'Arial',
             fontSize: '12px',
             backgroundColor: false,
             color: '#000000',

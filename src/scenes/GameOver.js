@@ -75,7 +75,7 @@ class Dead extends Phaser.Scene {
             this.music.pause();
             score = 0;
             lives = 3;
-            this.scene.start("menuScene");
+            this.scene.start("creditsScene");
         }
 
         if (this.fadingIn == false) {

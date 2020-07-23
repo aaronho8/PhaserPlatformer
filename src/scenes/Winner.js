@@ -75,7 +75,7 @@ class End extends Phaser.Scene {
       this.boy2 = false;
       this.girl2 = false;
       this.finale = false;
-      this.fadingOut = false
+      this.fadingOut = false;
 
       this.clock = this.time.delayedCall(2500, () => {
         this.intro = true;
@@ -159,9 +159,7 @@ class End extends Phaser.Scene {
           this.fadingOut = true;
         }
         this.clock = this.time.delayedCall(2500, () => {
-          score = 0;
-          lives = 3;
-          this.scene.start('menuScene');
+          this.scene.start('creditsScene');
         }, null, this);
       }
     }

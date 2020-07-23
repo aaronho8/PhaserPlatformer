@@ -18,7 +18,7 @@ var config = {
             debug: false
         }
     },
-    scene: [Menu, Cutscene, Game, Game1, Dead, End]
+    scene: [Menu, Cutscene, Game, Game1, Dead, End, Credits]
 }
 
 let game = new Phaser.Game(config);

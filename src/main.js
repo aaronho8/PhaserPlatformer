@@ -1,7 +1,21 @@
-// Team Members:
-// Aaron Ho
-// Justin Lao
-
+/* 
+*   Team Members:
+*   Aaron Ho
+*   Justin Lao
+*
+*------------------------------------------------------------------------------
+*   Contributers:
+*
+*   Level Design:
+*       Impulsive22, '2d Cloud', https://opengameart.org/content/2d-cloud
+*       SalemF, 'Shiny Sun', https://opengameart.org/content/shiny-sun
+*       Nicole Marie T, 'Heart 16*16', https://opengameart.org/content/heart-1616
+*       CharlesGabriel 'CGArtsenal', '10 Basic Message Boxes', https://opengameart.org/content/10-basic-message-boxes
+*       mase, Lorn Music Video 'Weigh Me Down',  https://vimeo.com/user3135298, (Link to Usage Agreement Below)
+*
+*   Sound Design:
+*       Chris Avila '8 Bit Wizard', Game Music, https://linktr.ee/flouresworld
+*/
 
 var config = {
     type: Phaser.AUTO,

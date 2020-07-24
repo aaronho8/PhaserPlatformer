@@ -146,7 +146,7 @@ class End extends Phaser.Scene {
   
         this.boyBox = this.add.image(50, 300, 'dBox').setScale(1.5).setOrigin(0,0);
         this.boyText = this.add.text(288, 340, "I guess that's just ...", this.winConfig).setOrigin(0.5);
-        this.enterText = this.add.text(380, 395, "PRESS ENTER TO SIMP", this.winConfig).setOrigin(0.5);
+        this.enterText = this.add.text(380, 395, "PRESS ENTER TO CRY", this.winConfig).setOrigin(0.5);
 
         this.girl2 = false;
         this.finale = true;

@@ -15,6 +15,7 @@
 *
 *   Sound Design:
 *       Chris Avila '8 Bit Wizard', Game Music, https://linktr.ee/flouresworld
+*       Pixel Beats 'Waiting For You', Game Music, https://www.youtube.com/watch?v=x9jd10FMejY
 */
 
 var config = {

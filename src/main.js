@@ -6,6 +6,9 @@
 *------------------------------------------------------------------------------
 *   Contributers:
 *
+*   Phaser Platformer Tutorial:
+        https://gamedevacademy.org/how-to-make-a-mario-style-platformer-with-phaser-3/
+*
 *   Level Design:
 *       Impulsive22, '2d Cloud', https://opengameart.org/content/2d-cloud
 *       SalemF, 'Shiny Sun', https://opengameart.org/content/shiny-sun
